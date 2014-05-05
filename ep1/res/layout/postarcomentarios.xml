@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="match_parent"
+  android:layout_height="match_parent" android:orientation="horizontal">
+    <TableLayout android:layout_height="match_parent" android:layout_width="fill_parent" android:id="@+id/tableLayout1">
+        <TextView android:id="@+id/textView1" android:layout_height="wrap_content" android:text="Escreva seu comentário" android:layout_width="wrap_content" android:gravity="center_horizontal" android:background="#0000FF" android:textColor="#ffffff" android:textStyle="bold"></TextView>
+        <TableRow android:id="@+id/tableRow1" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <EditText android:layout_width="0dip"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:inputType="textShortMessage"
+        android:imeOptions="flagNoEnterAction"
+        android:maxLines="1"
+        android:maxLength="50"
+        android:id="@+id/txtComentarioPostado"/>
+        
+        
+        </TableRow>
+        <Spinner 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:prompt="@string/tamanhoFila"
+        android:id="@+id/cmbTamanhoFila"/>
+        <Button android:text="Enviar" android:layout_height="wrap_content" android:layout_width="wrap_content" android:id="@+id/btnPostarComentario"></Button>
+    </TableLayout>
+</LinearLayout>

@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/s_title"
+        android:text="@string/caption_title"
+        style="@style/SeminarTitle" />
+
+    <TextView
+        android:id="@+id/s_panelist"
+        style="@style/SeminarPanelist"
+        android:text="@string/caption_panelist" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/s_datetime"
+                style="@style/SeminarInfo" />
+
+            <TextView
+                android:id="@+id/s_area"
+                style="@style/SeminarInfo" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:id="@+id/s_location"
+                style="@style/SeminarInfo" />
+
+            <TextView
+                android:id="@+id/s_responsible"
+                style="@style/SeminarInfo" />
+        </TableRow>
+
+    </TableLayout>
+
+    <WebView
+        android:id="@+id/s_abstract"
+        style="@style/SeminarAbstract" />
+
+</LinearLayout>

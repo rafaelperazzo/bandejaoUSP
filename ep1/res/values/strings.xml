@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Hello World, main!</string>
+    <string name="app_name">Universidade de São Paulo - Cardápios</string>
+    <string name="escolha_restaurante">Escolha o restaurante</string>
+    <string name="restaurante_prompt">Escolha um restaurante</string>
+    <string-array name="restaurantes_array">
+        <item>-</item>
+        <item>Restaurante Central</item>
+        <item>Restaurante da Física</item>
+        <item>Restaurante da Química</item>
+        <item>Restaurante do COCESP</item>
+        <item>Restaurante do Clube dos professores</item>
+        <item >Restaurante da Enfermagem</item>
+        <item >Restaurante da FSP</item>
+        <item >Restaurante do Direito</item>
+    </string-array>
+    <string-array name="fila_array">
+        <item>-</item>
+        <item>SEM_FILA</item>
+        <item>PEQUENA</item>
+        <item>MEDIA</item>
+        <item>GRANDE</item>
+        <item>MUITO_GRANDE</item>
+    </string-array>
+    <string name="sair">Sair</string>
+    <string name="sobre">Sobre</string>
+    <string name="tamanhoFila">Escolha um tamanho de fila</string>
+    <string name="menurecarregar">Recarregar dados</string>
+    <string name="error_updating_seminars">Não foi possível atualizar os seminários.</string>
+    <string name="seminars_updated">Os dados dos seminários foram atualizados.</string>
+    <string name="connection_not_available">O sistema está sem conexão à Internet. Os dados de seminário podem não estar atualizados.</string>
+    <string-array name="seminar_options">
+        <item >Seminários de Hoje</item>
+        <item >Seminários por Área</item>
+        <item >Pesquisar Seminário</item>
+        <item >Requisitar Atualização</item>
+    </string-array>
+    <string name="no_seminar">Nenhum seminário encontrado para esta pesquisa.</string>
+    <string name="seminars_update_unnecessary">Não foi necessário atualizar os dados dos seminários, a lista atual já é a mais recente.</string>
+    <string name="seminars_update_ongoing">Já há uma atualização dos dados de seminários em andamento.</string>
+    <string name="search_area_label">Área de Concentração</string>
+    <string name="search_title_label">Título</string>
+    <string name="search_start_label">Período Inicial</string>
+    <string name="search_end_label">Período Final</string>
+    <string name="search_go">Buscar</string>
+    <string name="search_all_areas">Todas as Áreas</string>
+    <string name="seminars_update_requested">A atualização dos dados dos seminários foi requisitada. Você será notificado em breve sobre o resultado.</string>
+    <string name="background_setup">O nível atual da bateria é %1$d%%, e por isso a atualização automática será efetuada em intervalos de %2$d minutos.</string>
+    <string name="caption_title">Título</string>
+    <string name="caption_panelist">Palestrante</string>
+    <string name="espaco">Espaco          </string>
+    
+</resources>

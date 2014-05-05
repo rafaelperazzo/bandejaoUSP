@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/menusair"
+          android:icon="@drawable/sair"
+          android:title="@string/sair" 
+    android:enabled="true" android:visible="true"/>
+    <item android:id="@+id/menusobre"
+          android:icon="@drawable/sobre"
+          android:title="@string/sobre" 
+    android:enabled="true" android:visible="true"/>
+    <item android:id="@+id/menuconfig"
+          android:icon="@drawable/sobre"
+          android:title="Configurações" 
+    android:enabled="true" android:visible="true"/>
+</menu>

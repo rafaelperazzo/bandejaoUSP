@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+  xmlns:android="http://schemas.android.com/apk/res/android">
+  <item android:id="@+id/menulimpar"
+          android:icon="@drawable/limpar"
+          android:title="Limpar" 
+    android:enabled="true" android:visible="true"/>
+    <item android:id="@+id/menucircular1"
+          android:icon="@drawable/circular1"
+          android:title="Circular 1(8012-10)" 
+    android:enabled="true" android:visible="true"/>
+    <item android:id="@+id/menucircular2"
+          android:icon="@drawable/circular2"
+          android:title="Circular 2(8022-10)" 
+    android:enabled="true" android:visible="true"/>
+    <item android:id="@+id/menuredesenhar"
+          android:icon="@drawable/recarregar"
+          android:title="Redesenhar" 
+    android:enabled="true" android:visible="true"/>
+    <item android:id="@+id/menuenviarlocalizacao"
+          android:icon="@drawable/enviar"
+          android:title="Enviar Coordenadas" 
+    android:enabled="true" android:visible="true"/>
+    <item android:id="@+id/menup1"
+          android:icon="@drawable/fila"
+          android:title="Fila P1" 
+    android:enabled="true" android:visible="true"/>
+    <item android:id="@+id/menup2"
+          android:icon="@drawable/fila"
+          android:title="Fila P2" 
+    android:enabled="true" android:visible="true"/>
+    <item android:id="@+id/menup3"
+          android:icon="@drawable/fila"
+          android:title="Fila P3" 
+    android:enabled="true" android:visible="true"/>
+    <item android:id="@+id/tamanhodafila"
+          android:icon="@drawable/fila"
+          android:title="Tamanho da Fila" 
+    android:enabled="true" android:visible="true"/>
+</menu>

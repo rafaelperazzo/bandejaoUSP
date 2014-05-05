@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:scrollbars="vertical" >
+
+<TextView  
+    android:layout_width="fill_parent" 
+    android:layout_height="wrap_content" 
+    android:layout_gravity="center"
+    android:id="@+id/txtInicio" android:gravity="center_horizontal" android:background="#0000FF" android:textColor="#ffffff" android:textStyle="bold" android:text="Restaurantes Da USP"/>
+
+<Button
+    android:id="@+id/btnBandeijao"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Bandeijão"
+    android:textStyle="bold"
+    android:visibility="invisible" >
+</Button>
+
+<ImageView
+    android:id="@+id/imgBandejao"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:src="@drawable/menu" />
+
+<TextView
+    android:id="@+id/textView1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:text="Cardápio do Bandejão USP"
+    android:textAppearance="?android:attr/textAppearanceMedium" />
+
+<Button
+    android:id="@+id/btnOndeEstou"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Mapa da USP e Fila dos Portões"
+    android:textStyle="bold"
+    android:visibility="invisible" >
+
+</Button>
+
+
+<Button
+    android:id="@+id/btnSemidroid"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Semidroid"
+    android:textStyle="bold"
+    android:visibility="invisible" >
+</Button>
+
+</LinearLayout>
