@@ -1,121 +1,212 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:orientation="vertical">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
 
-<LinearLayout
-    android:id="@+id/txtStatusBar"
-    android:layout_width="fill_parent"
-    android:layout_height="wrap_content"
-    android:isScrollContainer="true"
-    android:orientation="vertical"
-    android:padding="10dip"
-    android:scrollbars="vertical" >
-
-    <TextView
+    <LinearLayout
+        android:id="@+id/txtStatusBar"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dip"
-        android:text="@string/restaurante_prompt"
-        android:textColor="#ffffff"
-        android:textStyle="bold" />
+        android:isScrollContainer="true"
+        android:orientation="vertical"
+        android:padding="10dip"
+        android:scrollbars="vertical" >
 
-    <Spinner
-        android:id="@+id/cmbRestaurante"
-        android:layout_width="fill_parent"
-        android:layout_height="52dp"
-        android:prompt="@string/restaurante_prompt" />
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dip"
+            android:text="@string/restaurante_prompt"
+            android:textColor="#ffffff"
+            android:textStyle="bold" />
 
-    <ImageView
-        android:id="@+id/imgMostrarCardapio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:src="@drawable/icone_cardapio" />
+        <Spinner
+            android:id="@+id/cmbRestaurante"
+            android:layout_width="fill_parent"
+            android:layout_height="52dp"
+            android:prompt="@string/restaurante_prompt" />
 
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="Mostrar Cardápio da Semana"
-        android:textColor="#ffffff"
-        android:textStyle="bold" >
+        <RadioGroup
+            android:id="@+id/radioGroup1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
 
-    </TextView>
+            <RadioButton
+                android:id="@+id/radioSegunda"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Seg"
+                android:textSize="@dimen/medio" />
 
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="----------------------------------"
-        android:visibility="invisible" />
+            <RadioButton
+                android:id="@+id/radioTerca"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Ter"
+                android:textSize="@dimen/medio" />
 
-    <TableLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" >
+            <RadioButton
+                android:id="@+id/radioQuarta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Qua"
+                android:textSize="@dimen/medio" />
 
-        <TableRow
-            android:id="@+id/tableRow1"
-            android:layout_width="wrap_content"
+            <RadioButton
+                android:id="@+id/radioQuinta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Qui"
+                android:textSize="@dimen/medio" />
+
+            <RadioButton
+                android:id="@+id/radioSexta"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Sex"
+                android:textSize="@dimen/medio" />
+        </RadioGroup>
+
+        <TableLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" >
 
-            <TextView
-                android:id="@+id/textView2"
+            <RadioGroup
+                android:id="@+id/radioFDS"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:text="Cardápio de Hoje"
-                android:textAppearance="?android:attr/textAppearanceMedium" />
+                android:orientation="horizontal" >
 
-            <TextView
-                android:id="@+id/textView3"
+                <TableRow
+                    android:id="@+id/tableRow2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" >
+
+                    <TextView
+                        android:id="@+id/txtSabado"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sábado"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <TextView
+                        android:id="@+id/txtDomingo"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="       Domingo"
+                        android:textAppearance="?android:attr/textAppearanceSmall" />
+
+                    <ImageView
+                        android:id="@+id/imgProximaRefeicao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/refeicao" />
+
+                    <ImageView
+                        android:id="@+id/imgProximaRefeicao"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/refeicao" />
+                </TableRow>
+
+                <TextView
+                    android:id="@+id/textView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.79"
+                    android:text="Abrir hoje"
+                    android:textAppearance="?android:attr/textAppearanceSmall" />
+            </RadioGroup>
+
+        </TableLayout>
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cardápio de Hoje"
+            android:textAppearance="?android:attr/textAppearanceMedium" />
+
+        <EditText
+            android:id="@+id/textCardapio"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="4.68"
+            android:background="#C0C0C0"
+            android:editable="false"
+            android:ems="7"
+            android:freezesText="true"
+            android:gravity="top"
+            android:inputType="textMultiLine"
+            android:lines="7"
+            android:maxLines="10"
+            android:text="Não disponível" >
+
+            <requestFocus />
+        </EditText>
+
+        <TableLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TableRow
+                android:id="@+id/tableRow1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="@string/espaco"
-                android:visibility="invisible" />
+                android:gravity="fill_horizontal|clip_horizontal" >
 
-            <TextView
-                android:id="@+id/txtRefeicao"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:maxLines="2"
-                android:text="(Almoço)"
-                android:textAppearance="?android:attr/textAppearanceSmall"
-                android:textStyle="italic"
-                android:visibility="visible" />
+                <RadioGroup
+                    android:id="@+id/radioGroup"
+                    android:layout_width="198dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" >
 
-        </TableRow>
-    </TableLayout>
+                    <RadioButton
+                        android:id="@+id/radioAlmoco"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        android:text="Almoço" />
 
-    <EditText
-        android:id="@+id/textCardapio"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_weight="4.68"
-        android:editable="false"
-        android:ems="7"
-        android:freezesText="true"
-        android:gravity="top"
-        android:inputType="textMultiLine"
-        android:lines="7"
-        android:maxLines="10"
-        android:text="Não disponível"
-        android:background="#C0C0C0"
-         >
+                    <RadioButton
+                        android:id="@+id/radioJantar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="3.48"
+                        android:text="Jantar" />
+                </RadioGroup>
 
-        <requestFocus />
-    </EditText>
+                <TextView
+                    android:id="@+id/textView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/espaco"
+                    android:visibility="invisible" />
 
-    <TextView
-        android:id="@+id/txtStatus"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:textAppearance="?android:attr/textAppearanceSmall"
-        android:textStyle="bold"
-        android:typeface="serif" />
+                <TextView
+                    android:id="@+id/txtRefeicao"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="2"
+                    android:text="(Almoço)"
+                    android:textAppearance="?android:attr/textAppearanceSmall"
+                    android:textStyle="italic"
+                    android:visibility="invisible" />
+            </TableRow>
+        </TableLayout>
 
-</LinearLayout>
+        <TextView
+            android:id="@+id/txtStatus"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"
+            android:textAppearance="?android:attr/textAppearanceSmall"
+            android:textStyle="bold"
+            android:typeface="serif" />
+
+    </LinearLayout>
 
 </ScrollView>

@@ -274,6 +274,79 @@ public class Util{
 		return tabela;
 	}
 	
+	
+	/**
+	 * 
+	 * @param html HTML do Cardapio
+	 * @param dia Dia da semana - 1 - segunda, 2 - terca, ...
+	 * @param refeicao Almoço ou Jantar
+	 * @return Cardapio do dia
+	 */
+	public static String getCardapioDia(String html, int dia, boolean almoco) {
+		//http://stackoverflow.com/questions/10771218/how-to-get-a-table-from-an-html-page-using-java
+				String header ="";
+				header = header + "<html><head>\n";
+				header = header + "</head><body>";
+				String tabela;
+				String cardapio = "";
+				int inicio = html.indexOf("<table");
+				if (inicio==-1) {
+					inicio = html.indexOf("<TABLE");
+				}
+				int fim = html.indexOf("</table>");
+				if (fim==-1) {
+					fim = html.indexOf("</TABLE>");
+				}
+				tabela = new String(html.substring(inicio,fim+9));
+				tabela = header + tabela + "</body></html>";
+				//Recuperando dia e hora da solicitação
+				//Calendar ca1 = new GregorianCalendar();
+				//int dia=ca1.get(Calendar.DAY_OF_WEEK);
+				//SimpleDateFormat sdf = new SimpleDateFormat("H");
+				//int hora = Integer.parseInt(sdf.format(new Date()));
+				dia = dia +1;
+				//if (dia==0) dia = 7;
+				Document doc = Jsoup.parse(tabela);
+				//RAFAEL
+				Elements tableElements = doc.select("table");
+				Elements tableRowElements = tableElements.select(":not(thead) tr");
+				if ((POSICAO!=3)&&(POSICAO!=5)) { //RESTAURANTES EXCETO DA QUIMICA E PROFESSORES
+				    cardapio = "";
+					Element row = tableRowElements.get(dia);
+		            Elements rowItems = row.select("td");
+		            if (almoco) { //Almoco
+		            	
+		            		cardapio = rowItems.get(0).text();
+		            }
+		            else { //JANTAR
+		            		cardapio = rowItems.get(1).text(); 
+		            		if (cardapio.contains("OBSERVA")) {
+		            			cardapio = "FECHADO";
+		            		}
+		            }
+				}
+				
+				else { //quimica e professores
+					if ((dia!=7) && (dia!=6)) {
+						cardapio = "";
+						Element row = tableRowElements.get(dia);
+			            Elements rowItems = row.select("td");
+			            if (almoco) { //ALMOÇO
+			            	cardapio = rowItems.get(0).text();
+			            }
+			            else { //JANTAR
+			            		cardapio = rowItems.get(1).text(); 
+			            }
+					}
+					
+					else {
+						cardapio = "FECHADO";
+					}
+				}
+				
+				return cardapio;
+	}
+	
 	@SuppressLint("SimpleDateFormat")
 	public static String getCardapioDia(String html) {
 		//http://stackoverflow.com/questions/10771218/how-to-get-a-table-from-an-html-page-using-java

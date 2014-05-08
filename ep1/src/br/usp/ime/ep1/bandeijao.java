@@ -2,7 +2,9 @@ package br.usp.ime.ep1;
 
 import java.io.File;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.GregorianCalendar;
 
 import android.annotation.SuppressLint;
 import android.app.Activity;
@@ -27,6 +29,9 @@ import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.RadioGroup.OnCheckedChangeListener;
 import android.widget.Spinner;
 import android.widget.TextView;
 
@@ -39,12 +44,18 @@ import android.widget.TextView;
 
 @SuppressLint({ "HandlerLeak", "SimpleDateFormat" })
 //public class bandeijao extends Activity implements OnItemSelectedListener,OnClickListener, LocationListener {
-public class bandeijao extends Activity implements OnItemSelectedListener,OnClickListener {
+public class bandeijao extends Activity implements OnItemSelectedListener,OnClickListener,OnCheckedChangeListener {
 	
 	private ProgressDialog dialog;
 	private LocationManager locationManager;
 	private boolean podeMostraCardapio = false;
 	Spinner spinner;
+	RadioGroup diaDaSemana;
+	RadioGroup tipoRefeicao;
+	TextView txtSabado,txtDomingo;
+	int hoje;
+	boolean refeicaoHoje;
+	ImageView proximaRefeicao;
 	
 	    @Override
 	    public void onCreate(Bundle savedInstanceState) {
@@ -56,11 +67,22 @@ public class bandeijao extends Activity implements OnItemSelectedListener,OnClic
 	        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 	        spinner.setAdapter(adapter);
 	        spinner.setOnItemSelectedListener(this);
+	        proximaRefeicao = (ImageView)findViewById(R.id.imgProximaRefeicao);
+	        proximaRefeicao.setOnClickListener(this);
+	        diaDaSemana = (RadioGroup)findViewById(R.id.radioGroup1);
+	        tipoRefeicao = (RadioGroup) findViewById(R.id.radioGroup);
+	        txtSabado = (TextView) findViewById(R.id.txtSabado);
+	        txtDomingo = (TextView) findViewById(R.id.txtDomingo);
+	        txtSabado.setOnClickListener(this);
+	        txtDomingo.setOnClickListener(this);
+	        diaDaSemana.setOnCheckedChangeListener(this);
+	        tipoRefeicao.setOnCheckedChangeListener(this);
+	        
 	        //ImageButton cardapio = (ImageButton) findViewById(R.id.btnMostrarCardapio);
-	        ImageView imgMostrarCardapio = (ImageView)findViewById(R.id.imgMostrarCardapio);
+	        //ImageView imgMostrarCardapio = (ImageView)findViewById(R.id.imgMostrarCardapio);
 	        //cardapio.setOnClickListener(this);
-	        imgMostrarCardapio.setOnClickListener(this);
-	        spinner.setSelection(1);
+	        //imgMostrarCardapio.setOnClickListener(this);
+	        spinner.setSelection(2);
 	        //locationManager = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
 	        //locationManager.requestLocationUpdates(LocationManager.GPS_PROVIDER,0, 0, this);
 	        EditText cardapioDia = (EditText) findViewById(R.id.textCardapio);
@@ -68,17 +90,15 @@ public class bandeijao extends Activity implements OnItemSelectedListener,OnClic
 	        //TextView statusBar = (TextView) findViewById(R.id.txtStatus);
 	        //cardapioDia.setKeyListener(null); 
 	        cardapioDia.setFocusable(false);
-	        Util u = new Util();
+	        //Util u = new Util();
 	        TextView statusBar = (TextView) findViewById(R.id.txtStatus);
 	        statusBar.setBackgroundColor(Color.parseColor("#FF9900"));
 	        //http://www.immigration-usa.com/html_colors.html
 	        statusBar.setText("Verificando atualizações...");
 	        if (Util.existeCache(Util.sNOMESBANDEIJAO[Util.POSICAO])) {
-	        
-	        	cardapioDia.setText(Util.getCardapioDia(u.carregarCardapioOffline(Util.restauranteOFFLINE)));
-	        	
-	        }
-	                
+	        	//cardapioDia.setText(Util.getCardapioDia(u.carregarCardapioOffline(Util.restauranteOFFLINE)));
+	        	this.cardapioProximaRefeicao();	
+	        }        
 	    }
 	    
 	    /**
@@ -163,15 +183,15 @@ public class bandeijao extends Activity implements OnItemSelectedListener,OnClic
 		Util.restauranteOFFLINE = Util.sNOMESBANDEIJAO[pos];
 		TextView refeicao = (TextView) findViewById(R.id.txtRefeicao);
 		SimpleDateFormat sdf = new SimpleDateFormat("H");
-		
+		Calendar ca1 = new GregorianCalendar();
+		int dia=ca1.get(Calendar.DAY_OF_WEEK);
 		int hora = Integer.parseInt(sdf.format(new Date()));
 		if ((hora<=13)||(hora>=23)) {
-			refeicao.setText("ALMOÇO");
+			refeicao.setText("Almoço");
 		}
-		else refeicao.setText("JANTAR");
-		if (pos!=0) {
-			
-			
+		else refeicao.setText("Jantar");
+		this.agora();
+		if (pos!=0) {	
 			new Thread(new Runnable() {
 				
 				TextView statusBar = (TextView) findViewById(R.id.txtStatus);
@@ -185,6 +205,7 @@ public class bandeijao extends Activity implements OnItemSelectedListener,OnClic
 							rec.gravar();
 							Util.carregarCardapioOffline(posicao);
 							mostraMensagem("Dados atualizados com sucesso!");
+							
 							podeMostraCardapio = true;
 							Util.codigoStatus=1;
 							
@@ -196,9 +217,9 @@ public class bandeijao extends Activity implements OnItemSelectedListener,OnClic
 			                        	statusBar.setBackgroundColor(Color.parseColor("#003300"));
 			                        	statusBar.setTextColor(Color.parseColor("#FFFFFF"));
 			                        	cardapioDia.setText(Util.getCardapioDia(u.carregarCardapioOffline(Util.restauranteOFFLINE)));
+			                            
 			                        }
 			                    });
-			                  
 						}
 						else { //Se não precisa atualizar, pois o cache está atualizado
 							Util.carregarCardapioOffline(posicao);
@@ -241,8 +262,6 @@ public class bandeijao extends Activity implements OnItemSelectedListener,OnClic
 				                        	cardapioDia.setText(Util.getCardapioDia(u.carregarCardapioOffline(Util.restauranteOFFLINE)));
 				                        }
 				                    });
-				                    
-				                
 							}
 							else { //atualizado
 								Util.carregarCardapioOffline(posicao);
@@ -300,9 +319,9 @@ public class bandeijao extends Activity implements OnItemSelectedListener,OnClic
 	 *  */
 	@Override
 	public void onClick(View v) {
-		//EditText cardapioDia = (EditText) findViewById(R.id.textCardapio);
+		EditText cardapioDia = (EditText) findViewById(R.id.textCardapio);
 		//Util u = new Util();
-		if (v.getId()==R.id.imgMostrarCardapio) {
+		/*if (v.getId()==R.id.imgMostrarCardapio) {
 			if (spinner.getSelectedItemPosition()!=0) {
 				dialog = ProgressDialog.show(this,"Carregando o cardápio da semana", "Por favor aguarde....",true);
 				new Thread(new Runnable() {
@@ -314,6 +333,21 @@ public class bandeijao extends Activity implements OnItemSelectedListener,OnClic
 			else {
 				mostraMensagem("Selecione um bandejão primeiro!");
 			}
+		}*/
+		Util u = new Util();
+		if (v.getId()==R.id.imgProximaRefeicao) {
+			this.cardapioProximaRefeicao();	   
+		}
+		else if (v.getId()==R.id.txtSabado) {
+			this.diaDaSemana.clearCheck();
+			this.hoje = 5;
+			cardapioDia.setText(Util.getCardapioDia(u.carregarCardapioOffline(Util.restauranteOFFLINE),this.hoje,this.refeicaoHoje));
+			
+		}
+		else if (v.getId()==R.id.txtDomingo) {
+			this.diaDaSemana.clearCheck();
+			this.hoje = 6;
+			cardapioDia.setText(Util.getCardapioDia(u.carregarCardapioOffline(Util.restauranteOFFLINE),this.hoje,this.refeicaoHoje));
 		}
 		
 	}
@@ -395,6 +429,48 @@ public class bandeijao extends Activity implements OnItemSelectedListener,OnClic
 		
 	}
 	
+	private void cardapioProximaRefeicao() {
+		
+		
+		RadioGroup dias = (RadioGroup)findViewById(R.id.radioGroup1);
+		RadioGroup refeicoes = (RadioGroup)findViewById(R.id.radioGroup);
+		SimpleDateFormat sdf = new SimpleDateFormat("H");
+		Calendar ca1 = new GregorianCalendar();
+		int dia=ca1.get(Calendar.DAY_OF_WEEK);
+		int hora = Integer.parseInt(sdf.format(new Date()));
+		boolean almoco;
+		if ((hora<=13)||(hora>=20)) { //ALMOCO
+			almoco=true;
+			refeicoes.check(R.id.radioAlmoco);
+		}
+		else {
+			almoco=false;
+			refeicoes.check(R.id.radioJantar);
+		}
+		if (dia==2) { //SEGUNDA
+			dias.check(R.id.radioSegunda);
+		}
+		if (dia==3) { //TERCA
+			dias.check(R.id.radioTerca);
+		}
+		if (dia==4) { //QUARTA
+			dias.check(R.id.radioQuarta);
+		}
+		if (dia==5) { //QUINTA
+			dias.check(R.id.radioQuinta);
+		}
+		if (dia==6) { //SEXTA
+			dias.check(R.id.radioSexta);
+		}
+		dia = dia -2;
+		this.hoje = dia;
+		this.refeicaoHoje = almoco;
+		
+		EditText cardapioDia = (EditText) findViewById(R.id.textCardapio);
+		Util u = new Util();
+		cardapioDia.setText(Util.getCardapioDia(u.carregarCardapioOffline(Util.restauranteOFFLINE),this.hoje,this.refeicaoHoje));
+		
+	}
 		
 	private void carregarCardapio() {
 		this.runOnUiThread(new Runnable() {
@@ -420,4 +496,78 @@ public class bandeijao extends Activity implements OnItemSelectedListener,OnClic
 		public void handleMessage(Message msg) {
 		}
 		};
+
+	@Override
+	public void onCheckedChanged(RadioGroup arg0, int arg1) {
+		
+		
+		RadioGroup dias = (RadioGroup)findViewById(R.id.radioGroup1);
+		RadioGroup refeicoes = (RadioGroup)findViewById(R.id.radioGroup);
+			
+		TextView txtRefeicao = (TextView) findViewById(R.id.txtRefeicao);
+		int indexDias=0,indexRefeicoes=0;
+		
+		if (arg0==dias) { //RADIO DOS DIAS DA SEMANA (SEG-SEX)
+			indexDias = dias.indexOfChild(findViewById(dias.getCheckedRadioButtonId()));
+			this.hoje = indexDias;
+			
+		}
+		else if (arg0==refeicoes) { //RADIO DO ALMOÇO OU JANTAR
+			indexRefeicoes = refeicoes.indexOfChild(findViewById(refeicoes.getCheckedRadioButtonId()));
+			if (indexRefeicoes==0) {
+				this.refeicaoHoje = true;
+				txtRefeicao.setText("Almoço");
+			}
+			else {
+				this.refeicaoHoje = false;
+				txtRefeicao.setText("Jantar");
+			}
+		}
+		
+		
+		EditText cardapioDia = (EditText) findViewById(R.id.textCardapio);
+		
+		Util u = new Util();
+		//cardapioDia.setText(String.valueOf(this.hoje) + " " + String.valueOf(this.refeicaoHoje));
+		if (arg0.indexOfChild(findViewById(arg0.getCheckedRadioButtonId()))>-1)
+			cardapioDia.setText(Util.getCardapioDia(u.carregarCardapioOffline(Util.restauranteOFFLINE),this.hoje,this.refeicaoHoje));
+		
+		
+	}
+	
+	public void agora() {
+		
+		
+		RadioGroup dias = (RadioGroup)findViewById(R.id.radioGroup1);
+		RadioGroup refeicoes = (RadioGroup)findViewById(R.id.radioGroup);
+		SimpleDateFormat sdf = new SimpleDateFormat("H");
+		Calendar ca1 = new GregorianCalendar();
+		int dia=ca1.get(Calendar.DAY_OF_WEEK);
+		int hora = Integer.parseInt(sdf.format(new Date()));
+		
+		if ((hora<=13)||(hora>=20)) { //ALMOCO
+			this.refeicaoHoje = true;
+			refeicoes.check(R.id.radioAlmoco);
+		}
+		else {
+			this.refeicaoHoje = false;
+			refeicoes.check(R.id.radioJantar);
+		}
+		if (dia==2) { //SEGUNDA
+			dias.check(R.id.radioSegunda);
+		}
+		if (dia==3) { //TERCA
+			dias.check(R.id.radioTerca);
+		}
+		if (dia==4) { //QUARTA
+			dias.check(R.id.radioQuarta);
+		}
+		if (dia==5) { //QUINTA
+			dias.check(R.id.radioQuinta);
+		}
+		if (dia==6) { //SEXTA
+			dias.check(R.id.radioSexta);
+		}
+	}
+	
 }
