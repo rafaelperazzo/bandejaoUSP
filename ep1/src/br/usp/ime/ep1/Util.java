@@ -320,7 +320,7 @@ public class Util{
 		            }
 		            else { //JANTAR
 		            		cardapio = rowItems.get(1).text(); 
-		            		if (cardapio.contains("OBSERVA")) {
+		            		if ((cardapio.contains("OBSERVA"))||(cardapio.contains("acompanha"))) {
 		            			cardapio = "FECHADO";
 		            		}
 		            }

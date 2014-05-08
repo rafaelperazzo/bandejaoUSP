@@ -5,12 +5,13 @@ package br.usp.ime.ep1;
  */
 public class Gravador {
 	Util u;
-		
+			
 	public Gravador() {
 		u = new Util();
 	}
 	
 	public void gravar() {
+		
 		u.gravarCardapioOffline("http://www.usp.br/coseas/cardapio.html", "ccentral.html");
 		u.gravarCardapioOffline("http://www.usp.br/coseas/cardapiofisica.html", "cfisica.html");
 		u.gravarCardapioOffline("http://www.usp.br/coseas/cardapioquimica.html", "cquimica.html");

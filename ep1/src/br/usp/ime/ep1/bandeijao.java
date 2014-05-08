@@ -57,6 +57,7 @@ public class bandeijao extends Activity implements OnItemSelectedListener,OnClic
 	boolean refeicaoHoje;
 	ImageView proximaRefeicao;
 	
+	
 	    @Override
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
@@ -119,9 +120,11 @@ public class bandeijao extends Activity implements OnItemSelectedListener,OnClic
 			
 			switch (item.getItemId()) {
 		    case R.id.menurecarregar:
-		    	mostraMensagem("A atualização está sendo realizada e você será avisado ao término");
-	    		new Thread(new Runnable() {
-	    			
+		    	//mostraMensagem("A atualização está sendo realizada e você será avisado ao término");
+		    	
+		    	
+		    	new Thread(new Runnable() {
+	    			@Override
 	    			public void run() {
 	    				
 	    				File f = new File(Environment.getExternalStorageDirectory(),"ccentral.html");
@@ -135,6 +138,7 @@ public class bandeijao extends Activity implements OnItemSelectedListener,OnClic
 	    		    	else {
 	    		    		mostraMensagem("Você não está conectado a internet para realizar esta operação!");
 	    		    	}
+	    		    	//ringProgressDialog.dismiss();
 	    			}
 	    		}).start();
 		    	
@@ -402,6 +406,7 @@ public class bandeijao extends Activity implements OnItemSelectedListener,OnClic
 	}
 	
 	private void recarregar() {
+		
 		this.runOnUiThread(new Runnable() {
 	        public void run() {
 	        	Util u = new Util();
@@ -413,7 +418,9 @@ public class bandeijao extends Activity implements OnItemSelectedListener,OnClic
 	    		TextView statusBar = (TextView) findViewById(R.id.txtStatus);
 	    		statusBar.setText("Seus cardapios estao atualizados");
             	statusBar.setBackgroundColor(Color.parseColor("#003300"));
+            	
 	          }
+	        
 	        });
 		
 	}
