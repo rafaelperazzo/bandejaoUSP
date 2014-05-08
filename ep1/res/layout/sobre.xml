@@ -11,7 +11,7 @@
         <TextView android:id="@+id/textView2" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center_horizontal" android:background="#0000ff" android:textColor="#ffffff" android:text="Desenvolvida por Rafael Perazzo, Luis Carlos Vieira e Maciel Calebe Vidal"></TextView>
         <TextView android:text="perazzo@ime.usp.br" android:id="@+id/txtStatusBar" android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center_horizontal" android:background="#ffff00" android:textColor="#000000" android:textStyle="bold"></TextView>
         <TableRow android:id="@+id/tableRow1" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <TextView android:id="@+id/textView1" android:layout_width="wrap_content" android:text="Universidade de São Paulo - Instituto de Matemática de Estatística (IME) - Pós-Graduação em Ciência da Computação" android:layout_height="wrap_content" android:gravity="center_horizontal" android:background="#ffffff" android:textColor="#000000" android:textStyle="bold"></TextView>
+            <TextView android:id="@+id/txtHoje" android:layout_width="wrap_content" android:text="Universidade de São Paulo - Instituto de Matemática de Estatística (IME) - Pós-Graduação em Ciência da Computação" android:layout_height="wrap_content" android:gravity="center_horizontal" android:background="#ffffff" android:textColor="#000000" android:textStyle="bold"></TextView>
         </TableRow>
         <ImageView android:id="@+id/imageView2" android:src="@drawable/ime" android:layout_width="wrap_content" android:layout_height="wrap_content"></ImageView>
     </TableLayout>

@@ -35,7 +35,9 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.net.ConnectivityManager;
@@ -226,6 +228,7 @@ public class Util{
 		return true;
 	}
 	
+		
 	/**
 	 * Mostra uma mensagem do tipo TOAST (android) na tela
 	 * @param context Contexto da aplicação
@@ -560,7 +563,24 @@ public class Util{
 	 */
 	public boolean existeCache() {
 		File file = new File(Environment.getExternalStorageDirectory() + "/" + pasta + "/", "ccentral.html");
-		if (file.exists()) {
+		File file2 = new File(Environment.getExternalStorageDirectory() + "/" + pasta + "/", "cfisica.html");
+		File file3 = new File(Environment.getExternalStorageDirectory() + "/" + pasta + "/", "ccocesp.html");
+		File file4 = new File(Environment.getExternalStorageDirectory() + "/" + pasta + "/", "cquimica.html");
+		File file5 = new File(Environment.getExternalStorageDirectory() + "/" + pasta + "/", "cprofessores.html");
+		File file6 = new File(Environment.getExternalStorageDirectory() + "/" + pasta + "/", "cenfermagem.html");
+		File file7 = new File(Environment.getExternalStorageDirectory() + "/" + pasta + "/", "csaude.html");
+		File file8 = new File(Environment.getExternalStorageDirectory() + "/" + pasta + "/", "cdireito.html");
+		boolean f1 = file.exists();
+		boolean f2 = file2.exists();
+		boolean f3 = file3.exists();
+		boolean f4 = file4.exists();
+		boolean f5 = file5.exists();
+		boolean f6 = file6.exists();
+		boolean f7 = file7.exists();
+		boolean f8 = file8.exists();
+		boolean res = f1 &&  f2 && f3 && f4 && f5 && f6 && f7 && f8 ;
+		
+		if (res) {
 			return true;
 		}
 		else {

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="hello">Hello World, main!</string>
-    <string name="app_name">Universidade de São Paulo - Cardápios</string>
+    <string name="app_name">Bandejão USP</string>
     <string name="escolha_restaurante">Escolha o restaurante</string>
     <string name="restaurante_prompt">Escolha um restaurante</string>
     <string-array name="restaurantes_array">

@@ -113,11 +113,11 @@
                 </TableRow>
 
                 <TextView
-                    android:id="@+id/textView1"
+                    android:id="@+id/txtHoje"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="0.79"
-                    android:text="Abrir hoje"
+                    android:text="Agora"
                     android:textAppearance="?android:attr/textAppearanceSmall" />
             </RadioGroup>
 
@@ -179,6 +179,12 @@
                         android:text="Jantar" />
                 </RadioGroup>
 
+                <ImageView
+                    android:id="@+id/imgReload"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/reload" />
+
                 <TextView
                     android:id="@+id/textView3"
                     android:layout_width="wrap_content"
@@ -195,6 +201,7 @@
                     android:textAppearance="?android:attr/textAppearanceSmall"
                     android:textStyle="italic"
                     android:visibility="invisible" />
+
             </TableRow>
         </TableLayout>
 

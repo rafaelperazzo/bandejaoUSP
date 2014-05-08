@@ -4,7 +4,7 @@
   android:layout_width="match_parent"
   android:layout_height="match_parent">
     <TableLayout android:id="@+id/tableLayout1" android:layout_height="match_parent" android:layout_width="match_parent">
-        <TextView android:id="@+id/textView1" android:text="Configurações" android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="center_horizontal" android:background="#0000FF" android:textColor="#ffffff" android:textStyle="bold"></TextView>
+        <TextView android:id="@+id/txtHoje" android:text="Configurações" android:layout_width="fill_parent" android:layout_height="wrap_content" android:gravity="center_horizontal" android:background="#0000FF" android:textColor="#ffffff" android:textStyle="bold"></TextView>
         <TextView android:id="@+id/textView2" android:text="Servidor Bandejão" android:layout_width="wrap_content" android:layout_height="wrap_content" android:textColor="#ffffff"></TextView>
         <TableRow android:id="@+id/tableRow1" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <EditText android:layout_width="0dip"
